@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 1
+  persons: 1
+  type_id: MyString
+  integer: MyString
+  price: 9.99
+
+two:
+  number: 1
+  persons: 1
+  type_id: MyString
+  integer: MyString
+  price: 9.99
