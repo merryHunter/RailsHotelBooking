@@ -1,4 +1,6 @@
 Hotel::Application.routes.draw do
+  resources :apartment_types
+
   resources :rooms
 
   devise_for :users
