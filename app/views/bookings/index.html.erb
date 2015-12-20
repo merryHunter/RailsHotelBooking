@@ -2,28 +2,35 @@
 
 <table>
   <tr>
-    <th>Room</th>
+    <th>Room number</th>
+    <% if current_user.admin? %>
     <th>User</th>
+        <% end %>
     <th>Entry</th>
     <th>Final</th>
     <th></th>
+    <% if current_user.admin? %>
     <th></th>
+        <% end %>
     <th></th>
   </tr>
 
 <% @bookings.each do |booking| %>
   <tr>
     <td><%= booking.room_id %></td>
+    <% if current_user.admin? %>
     <td><%= booking.user_id %></td>
+        <% end %>
     <td><%= booking.entry %></td>
     <td><%= booking.final %></td>
     <td><%= link_to 'Show', booking %></td>
+    <% if current_user.admin? %>
     <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
     <td><%= link_to 'Destroy', booking, confirm: 'Are you sure?', method: :delete %></td>
+        <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Booking', new_booking_path %>

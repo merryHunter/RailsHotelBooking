@@ -34,7 +34,38 @@
   <b>Final:</b>
   <%= @request.final %>
 </p>
+<% unless @available_rooms.nil? %>
+<h2>Available rooms:</h2>
 
+<table>
+  <tr>
+    <th>Room Number</th>
+    <th>Persons</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+        <% @available_rooms.each do |room| %>
+            <tr>
+              <td><%= room['number'] %></td>
+              <td><%= room['persons'] %></td>
+              <td><%= @apartment_hash[room['type_id'].to_i] %></td>
+              <td><%= room['price'] %></td>
+              <td><%= button_to 'Assign', {controller: 'requests',
+                                           action: "assign",
+                                           :room_id => room['id'].to_i,
+                                            :id => @request.id} %></td>
+            </tr>
+        <% end %>
+</table>
+<% else %>
+    <%= button_to 'Reject request', {controller: 'requests',
+                                              action: "reject",
+                                              :id => @request.id}  %>
+<% end %>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>

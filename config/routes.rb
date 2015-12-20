@@ -7,6 +7,8 @@ Hotel::Application.routes.draw do
 
   root :to => 'home#index'
 
+  post "requests/assign"
+
   resources :requests
 
   resources :bookings

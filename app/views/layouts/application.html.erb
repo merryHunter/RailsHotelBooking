@@ -42,6 +42,9 @@
 
   </div>
   <div id="main">
+    <% if notice %>
+        <%= notice %>
+        <% end%>
     <%= yield %>
   </div>
 </div>

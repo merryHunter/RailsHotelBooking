@@ -1,9 +1,16 @@
 class BookingsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
+    if current_user.admin?
+      @bookings = Booking.all
+    else
+      logger.debug("User ID ")
+      logger.debug(current_user.id)
+      @bookings = Booking.where(:user_id => current_user.id)
 
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bookings }
@@ -14,7 +21,7 @@ class BookingsController < ApplicationController
   # GET /bookings/1.json
   def show
     @booking = Booking.find(params[:id])
-
+    @price = Room.find(@booking.room_id).price
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @booking }

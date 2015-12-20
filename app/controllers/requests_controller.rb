@@ -1,8 +1,10 @@
 class RequestsController < ApplicationController
+  before_filter :authenticate_admin, :init
+
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all
+    @requests = Request.where(status: -1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +16,14 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
-
+    @available_rooms = get_available_rooms @request
+    @available_rooms.each do |r|
+    logger.debug("TYPE ID")
+    logger.debug(r['type_id'])
+    logger.debug(r['type_id'].instance_of? Integer)
+    logger.debug(r['type_id'].instance_of? String)
+    logger.debug(@apartment_hash.values_at(1))
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @request }
@@ -40,8 +49,9 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @request = Request.new(params[:request])
 
+    @request = Request.new(params[:request])
+    @request.status = -1
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
@@ -80,4 +90,51 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def assign
+    booking = Booking.new
+    @request = Request.find(params[:id])
+    booking.room_id = params[:room_id]
+    booking.user_id = @request.user_id
+    booking.entry = @request.entry
+    booking.final = @request.final
+    @request.status = 1
+
+    if booking.save && @request.save
+      respond_to do |format|
+        format.html { redirect_to requests_url , notice: "Assigned!"}
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to requests_url , notice: "Error"}
+        format.json { head :no_content }
+      end
+      end
+  end
+
+
+  def reject
+
+  end
+
+  # TODO:production connection setup!
+  # TODO:test sql query!!! no
+  private
+    def get_available_rooms(request)
+      results = ActiveRecord::Base.connection.execute(
+                      "Select * from ROOMS WHERE rooms.id in (Select rooms.id from ROOMS
+                        INNER JOIN bookings ON rooms.id = bookings.room_id WHERE
+                           rooms.type_id =  #{request.type_id} AND
+                           rooms.persons >= #{request.persons})")
+      if results.present?
+        return results
+      else
+        return nil
+      end
+    end
+
+    def init
+      @apartment_hash = init_apartment_types_hash
+    end
 end

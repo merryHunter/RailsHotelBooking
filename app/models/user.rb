@@ -11,7 +11,4 @@ class User < ActiveRecord::Base
   belongs_to :booking
   belongs_to :request
 
-  def admin?
-      :admin
-  end
 end

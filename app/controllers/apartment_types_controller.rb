@@ -3,7 +3,7 @@ class ApartmentTypesController < ApplicationController
   # GET /apartment_types
   # GET /apartment_types.json
   def index
-    @apartment_types = ApartmentType.all
+    # @apartment_types = ApartmentType.all
 
     respond_to do |format|
       format.html # index.html.erb
