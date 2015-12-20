@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151220150451) do
+ActiveRecord::Schema.define(:version => 20151220160223) do
 
   create_table "apartment_types", :force => true do |t|
     t.string   "title"
@@ -44,8 +44,7 @@ ActiveRecord::Schema.define(:version => 20151220150451) do
     t.integer  "number"
     t.integer  "persons"
     t.string   "type_id"
-    t.string   "integer"
-    t.decimal  "price"
+    t.integer  "price"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

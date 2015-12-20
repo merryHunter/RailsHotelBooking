@@ -19,13 +19,10 @@
     <%= f.label :persons %><br />
     <%= f.number_field :persons %>
   </div>
+    Apartment type:
   <div class="field">
-    <%= f.label :type_id %><br />
-    <%= f.text_field :type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :integer %><br />
-    <%= f.text_field :integer %>
+    <%= select_tag 'type_id',
+                   options_from_collection_for_select(@apartment_types, 'id', 'title') %>
   </div>
   <div class="field">
     <%= f.label :price %><br />

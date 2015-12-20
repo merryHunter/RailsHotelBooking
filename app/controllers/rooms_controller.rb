@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   skip_before_filter :authenticate_admin
+  before_filter :init
   # before_filter :authenticate_admin
 
   # GET /rooms
@@ -44,7 +45,7 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(params[:room])
-
+    @room.type_id = params[:type_id]
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
@@ -83,4 +84,9 @@ class RoomsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def init
+      @apartment_types = ApartmentType.all
+    end
 end
