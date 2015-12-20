@@ -13,22 +13,33 @@
 </div>
 <div id="columns">
   <div id="side">
+
     <!--authorized user section-->
     <% if user_signed_in? %>
         <h3 style="color: white"> <strong><%= current_user.email %></strong></h3><br/>
-        <%#= link_to "Profile", account_manager_account_path%> <br/>
+        <%= link_to "My bookings", bookings_path %> <br/>
+        <%= link_to "Book room", profile_book_path %> <br/>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %><br/>
+
+        <!--admin section-->
+
+        <% if current_user.admin? %>
+            <br/><h2 style="color: white">Admin:</h2>
+              <%= link_to "Apartments", apartment_types_path %> <br/>
+              <%= link_to "Rooms", rooms_path %><br/>
+              <%= link_to "Requests", requests_path %><br/>
+              <%= link_to "Bookings", bookings_path %><br/>
+        <% end %>
+
+
     <% else %>
+        <!--unathorized section-->
+
         <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> <br/>
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><br/>
 
     <% end %>
-    <ul>
-      <li><a href="http://www....">Home</a></li>
-      <li><a href="http://www..../faq">Questions</a></li>
-      <li><a href="http://www..../news">News</a></li>
-      <li><a href="http://www..../contact">Contact</a></li>
-    </ul>
+
   </div>
   <div id="main">
     <%= yield %>

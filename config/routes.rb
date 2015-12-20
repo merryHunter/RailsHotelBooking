@@ -1,4 +1,12 @@
 Hotel::Application.routes.draw do
+  get "home/index"
+
+  get "profile/index"
+
+  get "profile/book"
+
+  root :to => 'home#index'
+
   resources :requests
 
   resources :bookings

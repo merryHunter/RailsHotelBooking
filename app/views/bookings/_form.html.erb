@@ -15,10 +15,15 @@
     <%= f.label :room_id %><br />
     <%= f.number_field :room_id %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
+
+    <!--TODO-->
+   <% unless current_user.admin? %>
+        <div class="field">
+          <%= f.label :user_id %><br />
+          <%= f.number_field :user_id %>
+        </div>
+   <% end %>
+
   <div class="field">
     <%= f.label :entry %><br />
     <%= f.date_select :entry %>

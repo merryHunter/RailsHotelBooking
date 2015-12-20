@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :booking
   belongs_to :request
+
+  def admin?
+      :admin
+  end
 end
