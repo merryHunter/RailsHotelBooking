@@ -1,4 +1,8 @@
 Hotel::Application.routes.draw do
+  resources :requests
+
+  resources :bookings
+
   resources :apartment_types
 
   resources :rooms
