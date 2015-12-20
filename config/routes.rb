@@ -5,8 +5,6 @@ Hotel::Application.routes.draw do
 
   get "profile/book"
 
-  root :to => 'home#index'
-
   post "requests/assign"
 
   post "requests/reject"
@@ -20,6 +18,13 @@ Hotel::Application.routes.draw do
   resources :rooms
 
   devise_for :users
+  scope '(:locale)' do
+    resources :requests
+    resources :bookings
+    resources :apartment_types
+    resources :rooms
+    root :to => 'home#index', as: 'home'
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
