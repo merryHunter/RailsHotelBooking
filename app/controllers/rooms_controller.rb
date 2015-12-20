@@ -88,5 +88,6 @@ class RoomsController < ApplicationController
   private
     def init
       @apartment_types = ApartmentType.all
+      @apartment_hash = init_apartment_types_hash
     end
 end

@@ -9,6 +9,8 @@ Hotel::Application.routes.draw do
 
   post "requests/assign"
 
+  post "requests/reject"
+
   resources :requests
 
   resources :bookings

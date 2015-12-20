@@ -18,7 +18,7 @@
     <% if user_signed_in? %>
         <h3 style="color: white"> <strong><%= current_user.email %></strong></h3><br/>
         <%= link_to "My bookings", bookings_path %> <br/>
-        <%= link_to "Book room", profile_book_path %> <br/>
+        <%= link_to "Book room", controller: 'requests', action: 'new' %> <br/>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %><br/>
 
         <!--admin section-->

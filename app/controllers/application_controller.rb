@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
       @apartment_types = ApartmentType.all
       @apartment_hash = {}
       @apartment_types.each do |a|
-        @apartment_hash[a.id] = a.title
+
+        @apartment_hash[a.id.to_s] = a.title
       end
       @apartment_hash
     end

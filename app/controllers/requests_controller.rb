@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
-  before_filter :authenticate_admin, :init
+  before_filter :init
+  before_filter :authenticate_admin, only: [:show, :index, :destroy]
 
   # GET /requests
   # GET /requests.json
@@ -16,13 +17,8 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
-    @available_rooms = get_available_rooms @request
-    @available_rooms.each do |r|
-    logger.debug("TYPE ID")
-    logger.debug(r['type_id'])
-    logger.debug(r['type_id'].instance_of? Integer)
-    logger.debug(r['type_id'].instance_of? String)
-    logger.debug(@apartment_hash.values_at(1))
+    if current_user.admin?
+      @available_rooms = get_available_rooms @request
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -49,8 +45,10 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-
+    logger.debug("POST REQUEST CREATE")
     @request = Request.new(params[:request])
+    @request.type_id = params[:type_id]
+    @request.user_id = current_user.id
     @request.status = -1
     respond_to do |format|
       if @request.save
@@ -115,7 +113,12 @@ class RequestsController < ApplicationController
 
 
   def reject
-
+    @request.status = 0
+    @request.save
+    respond_to do |format|
+      format.html { redirect_to requests_url , notice: "Assigned!"}
+      format.json { head :no_content }
+    end
   end
 
   # TODO:production connection setup!

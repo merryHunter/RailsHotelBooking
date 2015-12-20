@@ -17,7 +17,7 @@
 <% @requests.each do |request| %>
   <tr>
     <td><%= request.user_id %></td>
-    <td><%= request.type_id %></td>
+    <td><%= @apartment_hash[request.type_id.to_s] %></td>
     <td><%= request.name %></td>
     <td><%= request.comment %></td>
     <td><%= request.persons %></td>

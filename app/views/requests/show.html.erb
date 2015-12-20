@@ -7,7 +7,7 @@
 
 <p>
   <b>Type:</b>
-  <%= @request.type_id %>
+  <%=@apartment_hash[@request.type_id.to_s] %>
 </p>
 
 <p>
@@ -52,7 +52,7 @@
             <tr>
               <td><%= room['number'] %></td>
               <td><%= room['persons'] %></td>
-              <td><%= @apartment_hash[room['type_id'].to_i] %></td>
+              <td><%= @apartment_hash[room['type_id']] %></td>
               <td><%= room['price'] %></td>
               <td><%= button_to 'Assign', {controller: 'requests',
                                            action: "assign",
