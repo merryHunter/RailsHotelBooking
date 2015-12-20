@@ -4,12 +4,12 @@
   <b>Room:</b>
   <%= @booking.room_id %>
 </p>
-
+<% if current_user.admin? %>
 <p>
   <b>User:</b>
   <%= @booking.user_id %>
 </p>
-
+<% end %>
 <p>
   <b>Entry:</b>
   <%= @booking.entry %>

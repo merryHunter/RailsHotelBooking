@@ -17,6 +17,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
+
     if current_user.admin?
       @available_rooms = get_available_rooms @request
     end
@@ -52,7 +53,7 @@ class RequestsController < ApplicationController
     @request.status = -1
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to bookings_path, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
         format.html { render action: "new" }
@@ -97,7 +98,8 @@ class RequestsController < ApplicationController
     booking.entry = @request.entry
     booking.final = @request.final
     @request.status = 1
-
+    logger.debug(@request.to_s)
+    logger.debug(booking.to_s)
     if booking.save && @request.save
       respond_to do |format|
         format.html { redirect_to requests_url , notice: "Assigned!"}
@@ -113,12 +115,14 @@ class RequestsController < ApplicationController
 
 
   def reject
+    @request = Request.find(params[:id])
     @request.status = 0
-    @request.save
-    respond_to do |format|
-      format.html { redirect_to requests_url , notice: "Assigned!"}
-      format.json { head :no_content }
-    end
+    if @request.save
+          respond_to do |format|
+            format.html { redirect_to requests_url , notice: "Rejected!"}
+            format.json { head :no_content }
+          end
+      end
   end
 
   # TODO:production connection setup!
