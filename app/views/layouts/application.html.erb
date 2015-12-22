@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= t('title') %>)</title>
+  <title><%= t('title') %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -15,7 +15,6 @@
 
       <%= javascript_tag "$('locale input').hide()" %>
   <% end %>
-  <%= image_tag("logo.png") %>
   <%= @page_title || t('hotel') %>
 
 </div>

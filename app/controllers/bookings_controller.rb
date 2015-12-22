@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_admin, only: [:new, :destroy]
   # GET /bookings
   # GET /bookings.json
   def index

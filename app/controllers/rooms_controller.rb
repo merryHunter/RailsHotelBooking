@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  skip_before_filter :authenticate_admin
+  before_filter :authenticate_admin
   before_filter :init
   # before_filter :authenticate_admin
 
