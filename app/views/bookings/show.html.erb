@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Room:</b>
+  <b><%= t('bookings.room') %></b>
   <%= @booking.room_id %>
 </p>
 <% if current_user.admin? %>
 <p>
-  <b>User:</b>
+  <b><%= t('user') %></b>
   <%= @booking.user_id %>
 </p>
 <% end %>
 <p>
-  <b>Entry:</b>
+  <b><%= t('entry') %></b>
   <%= @booking.entry %>
 </p>
 
 <p>
-  <b>Final:</b>
+  <b><%= t('final') %></b>
   <%= @booking.final %>
 </p>
 <p>
-  <b>Price:</b>
+  <b><%= t('price') %></b>
   <%= @price %>
 </p>
 
 
 <% if current_user.admin? %>
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to t('edit'), edit_booking_path(@booking) %> |
 <% end %>
-<%= link_to 'Back', bookings_path %>
+<%= link_to t('back'), bookings_path %>

@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Number:</b>
+  <b><%= t('bookings.room_number') %>:</b>
   <%= @room.number %>
 </p>
 
 <p>
-  <b>Persons:</b>
+  <b><%= t('requests.persons') %>::</b>
   <%= @room.persons %>
 </p>
 
 <p>
-  <b>Type:</b>
+  <b><%= t('type') %>::</b>
   <%= @apartment_hash[@room.type_id.to_s] %>
 </p>
 
 
 <p>
-  <b>Price:</b>
+  <b><%= t('price') %>::</b>
   <%= @room.price %>
 </p>
 
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<%= link_to t('edit'), edit_room_path(@room) %> |
+<%= link_to t('back'), rooms_path %>

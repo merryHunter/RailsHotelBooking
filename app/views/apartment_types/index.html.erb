@@ -1,8 +1,8 @@
-<h1>Listing apartment_types</h1>
+<h1><%= t('apartments.listing') %></h1>
 
 <table>
   <tr>
-    <th>Title</th>
+    <th><%= t('title') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,13 +11,13 @@
 <% @apartment_types.each do |apartment_type| %>
   <tr>
     <td><%= apartment_type.title %></td>
-    <td><%= link_to 'Show', apartment_type %></td>
-    <td><%= link_to 'Edit', edit_apartment_type_path(apartment_type) %></td>
-    <td><%= link_to 'Destroy', apartment_type, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to t('show'), apartment_type %></td>
+    <td><%= link_to t('edit'), edit_apartment_type_path(apartment_type) %></td>
+    <td><%= link_to t('destroy'), apartment_type, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Apartment type', new_apartment_type_path %>
+<%= link_to t('apartments.new'), new_apartment_type_path %>

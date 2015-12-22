@@ -1,11 +1,11 @@
-<h1>Listing rooms</h1>
+<h1><%= t('room.listing') %></h1>
 
 <table>
   <tr>
-    <th>Number</th>
-    <th>Persons</th>
-    <th>Type</th>
-    <th>Price</th>
+    <th><%= t('bookings.room_number') %></th>
+    <th><%= t('requests.persons') %></th>
+    <th><%= t('type') %></th>
+    <th><%= t('price') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,13 +17,13 @@
     <td><%= room.persons %></td>
     <td><%= @apartment_hash[room.type_id.to_s] %></td>
     <td><%= room.price %></td>
-    <td><%= link_to 'Show', room %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-    <td><%= link_to 'Destroy', room, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to t('show'), room %></td>
+    <td><%= link_to t('edit'), edit_room_path(room) %></td>
+    <td><%= link_to t('destroy'), room, confirm: t('confirm'), method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Room', new_room_path %>
+<%= link_to t('room.new'), new_room_path %>

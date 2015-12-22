@@ -16,7 +16,7 @@
       <%= javascript_tag "$('locale input').hide()" %>
   <% end %>
   <%= image_tag("logo.png") %>
-  <%= @page_title || "Pragmatic Bookshelf" %>
+  <%= @page_title || t('hotel') %>
 
 </div>
 
@@ -26,26 +26,26 @@
     <!--authorized user section-->
     <% if user_signed_in? %>
         <h3 style="color: white"> <strong><%= current_user.email %></strong></h3><br/>
-        <%= link_to "My bookings", bookings_path %> <br/>
-        <%= link_to "Book room", controller: 'requests', action: 'new' %> <br/>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %><br/>
+        <%= link_to t('application.my_bookings'), bookings_path %> <br/>
+        <%= link_to t('application.book'), controller: 'requests', action: 'new' %> <br/>
+        <%= link_to t('logout'), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %><br/>
 
         <!--admin section-->
 
         <% if current_user.admin? %>
-            <br/><h2 style="color: white">Admin:</h2>
-              <%= link_to "Apartments", apartment_types_path %> <br/>
-              <%= link_to "Rooms", rooms_path %><br/>
-              <%= link_to "Requests", requests_path %><br/>
-              <%= link_to "Bookings", bookings_path %><br/>
+            <br/><h2 style="color: white"><%= t('admin') %>:</h2>
+              <%= link_to t('application.apartments'), apartment_types_path %> <br/>
+              <%= link_to t('application.rooms'), rooms_path %><br/>
+              <%= link_to t('application.requests'), requests_path %><br/>
+              <%= link_to t('application.bookings'), bookings_path %><br/>
         <% end %>
 
 
     <% else %>
         <!--unathorized section-->
 
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> <br/>
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><br/>
+        <%= link_to t('sign_up'), new_user_registration_path, :class => 'navbar-link'  %> <br/>
+        <%= link_to t('login'), new_user_session_path, :class => 'navbar-link'  %><br/>
 
     <% end %>
 

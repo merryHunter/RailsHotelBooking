@@ -1,7 +1,7 @@
 <%= form_for(@room) do |f| %>
   <% if @room.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <h2><%= pluralize(@room.errors.count, "error") %> <%= t('room.error')%>:</h2>
 
       <ul>
       <% @room.errors.full_messages.each do |msg| %>
@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %><br />
+    <%= f.label t('bookings.room_number') %><br />
     <%= f.number_field :number %>
   </div>
   <div class="field">
-    <%= f.label :persons %><br />
+    <%= f.label t('requests.persons') %><br />
     <%= f.number_field :persons %>
   </div>
     Apartment type:
@@ -25,7 +25,7 @@
                    options_from_collection_for_select(@apartment_types, 'id', 'title') %>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
+    <%= f.label t('price') %><br />
     <%= f.text_field :price %>
   </div>
   <div class="actions">

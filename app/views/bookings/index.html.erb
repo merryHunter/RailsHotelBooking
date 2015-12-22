@@ -1,13 +1,13 @@
-<h1>Listing bookings</h1>
+<h1><%= t('bookings.listing') %></h1>
 
 <table>
   <tr>
-    <th>Room number</th>
+    <th><%= t('bookings.room_number') %></th>
     <% if current_user.admin? %>
-    <th>User</th>
+    <th><%= t('user') %></th>
         <% end %>
-    <th>Entry</th>
-    <th>Final</th>
+    <th><%= t('entry') %></th>
+    <th><%= t('final') %></th>
     <th></th>
     <% if current_user.admin? %>
     <th></th>
@@ -23,10 +23,10 @@
         <% end %>
     <td><%= booking.entry %></td>
     <td><%= booking.final %></td>
-    <td><%= link_to 'Show', booking %></td>
+    <td><%= link_to t('show'), booking %></td>
     <% if current_user.admin? %>
-    <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-    <td><%= link_to 'Destroy', booking, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to t('edit'), edit_booking_path(booking) %></td>
+    <td><%= link_to t('destroy'), booking, confirm: 'Are you sure?', method: :delete %></td>
         <% end %>
   </tr>
 <% end %>

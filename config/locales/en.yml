@@ -3,3 +3,111 @@
 
 en:
   title: "Hotel Booking"
+  hotel:  "Grand Hotel"
+  login:  "Login"
+  logout: "Logout"
+  sign_up:  "Sign up"
+  show:   "Show"
+  edit:   "Edit"
+  destroy:  "Destroy"
+  user:       "User"
+  entry:    "Arrival date"
+  final:    "Date of departure"
+  back:      'Back'
+  price:      "Price"
+  title:      "Title"
+  type:       "Type"
+  name:       "Name"
+  confirm:    'Are you sure?'
+  greeting_admin:   "Hello, admin!"
+  greeting_client:  "Hello, client!"
+  greeting_guest:  "Hello, guest!"
+  submit:         "Submit"
+  admin:      "Admin"
+  application:
+      my_bookings:  "My bookings"
+      book:         "Book room"
+      apartments:   "Apartments"
+      rooms:        "Rooms"
+      requests:     "Requests"
+      bookings:     "Bookings"
+  bookings:
+      listing:    "Listing bookings"
+      room_number:  "Room number"
+      new:        "Book room"
+      room:       "Room"
+      edit:       "Edit bookings"
+      error:      "prohibited this booking from being saved:"
+  apartments:
+      listing:    "Listing apartment types"
+      new:        'New Apartment type'
+      type:        "Apartment type"
+  requests:
+      listing:  "Listing requests"
+      new:    "New request"
+      comment:  "Comment"
+      persons:  "Persons"
+      available:  "Available rooms"
+      no_available:  "No available rooms!"
+      reject:     "Reject request"
+      edit:       "Editing request"
+      error:      "prohibited this request from being saved"
+  room:
+      error:      "prohibited this room from being saved"
+      listing:    "Listing rooms"
+      edit:       "Editing room"
+      new:        "New Room"
+  date:
+          abbr_day_names:
+          - Sn
+          - Md
+          - Td
+          - Wd
+          - Thd
+          - Fd
+          - St
+          abbr_month_names:
+          -
+          - Jan.
+          - Feb.
+          - March
+          - Apr.
+          - May
+          - June
+          - July
+          - Aug.
+          - Sept.
+          - Oct.
+          - Nov.
+          - Dec.
+          day_names:
+          - Sunday
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+          - Saturday
+          formats:
+            default: "%d.%m.%Y"
+            long: "%-d %B %Y"
+            short: "%-d %b"
+          month_names:
+          -
+          - January
+          - February
+          - March
+          - April
+          - May
+          - June
+          - July
+          - August
+          - September
+          - October
+          - November
+          - December
+          order:
+          - :day
+          - :month
+          - :year
+

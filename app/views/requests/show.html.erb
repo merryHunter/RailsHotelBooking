@@ -1,48 +1,48 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
+  <b><%= t('user') %>:</b>
   <%= @request.user_id %>
 </p>
 
 <p>
-  <b>Type:</b>
+  <b><%= t('type') %>:</b>
   <%=@apartment_hash[@request.type_id.to_s] %>
 </p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t('name') %>:</b>
   <%= @request.name %>
 </p>
 
 <p>
-  <b>Comment:</b>
+  <b><%= t('requests.comment') %>:</b>
   <%= @request.comment %>
 </p>
 
 <p>
-  <b>Persons:</b>
+  <b><%= t('requests.persons') %>:</b>
   <%= @request.persons %>
 </p>
 
 <p>
-  <b>Entry:</b>
+  <b><%= t('entry') %>:</b>
   <%= @request.entry %>
 </p>
 
 <p>
-  <b>Final:</b>
+  <b><%= t('final') %>:</b>
   <%= @request.final %>
 </p>
 <% unless @available_rooms.empty?  %>
-<h2>Available rooms:</h2>
+<h2><%=  t('requests.available') %>:</h2>
 
 <table>
   <tr>
-    <th>Room Number</th>
-    <th>Persons</th>
-    <th>Type</th>
-    <th>Price</th>
+    <th><%=  t('bookings.room_number') %></th>
+    <th><%=  t('requests.persons') %></th>
+    <th><%=  t('type') %></th>
+    <th><%=  t('price') %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -62,11 +62,11 @@
         <% end %>
 </table>
 <% else %>
-    <h2> No available rooms!</h2> <br/>
-    <%= button_to 'Reject request', {controller: 'requests',
+    <h2> <%=  t('requests.no_available') %></h2> <br/>
+    <%= button_to t('requests.reject'), {controller: 'requests',
                                               action: "reject",
                                               :id => @request.id}  %>
 <% end %>
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+<%= link_to t('edit'), edit_request_path(@request) %> |
+<%= link_to t('back'), requests_path %>
