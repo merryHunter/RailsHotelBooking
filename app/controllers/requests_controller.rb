@@ -129,16 +129,26 @@ class RequestsController < ApplicationController
   # TODO:test sql query!!! no
   private
     def get_available_rooms(request)
-      results = ActiveRecord::Base.connection.execute(
-                      "Select * from ROOMS WHERE rooms.id in (Select rooms.id from ROOMS
-                        INNER JOIN bookings ON rooms.id = bookings.room_id WHERE
-                           rooms.type_id =  #{request.type_id} AND
-                           rooms.persons >= #{request.persons})")
-      if results.present?
-        return results
-      else
-        return nil
+      rooms = Room.all
+      bookings = Booking.all
+      results = []
+      rooms.each do |r|
+        flag = true
+        if r.persons >= request.persons.to_i and r.type_id == request.type_id.to_s
+          bookings.each do |b|
+            logger.debug(b.final)
+            logger.debug(b.final.to_s)
+            if b.room_id == r.id and !((b.final < request.entry) || (b.entry > request.final))
+                  flag = false
+                  break
+            end
+          end
+          if flag
+                results << r
+          end
+        end
       end
+      results
     end
 
     def init

@@ -31,5 +31,6 @@
 </table>
 
 <br />
-
+<%# if current_user.admin? %>
 <%= link_to 'New Request', new_request_path %>
+<%# end %>

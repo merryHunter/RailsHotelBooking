@@ -34,7 +34,7 @@
   <b>Final:</b>
   <%= @request.final %>
 </p>
-<% unless @available_rooms.nil? %>
+<% unless @available_rooms.empty?  %>
 <h2>Available rooms:</h2>
 
 <table>
@@ -62,6 +62,7 @@
         <% end %>
 </table>
 <% else %>
+    <h2> No available rooms!</h2> <br/>
     <%= button_to 'Reject request', {controller: 'requests',
                                               action: "reject",
                                               :id => @request.id}  %>
