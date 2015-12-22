@@ -7,21 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %>">
-<div id="banner">
-  <%= form_tag home_path, class: 'locale' do %>
+
+<div id="columns">
+  <div id="side">
+ <span>
+
+  <%= @page_title || t('hotel') %>
+   <%= form_tag home_path, class: 'locale' do %>
       <%= select_tag 'set_locale',
                      options_for_select(LANGUAGES, I18n.locale.to_s),
                      onchange: 'this.form.submit()' %>
 
-      <%= javascript_tag "$('locale input').hide()" %>
-  <% end %>
-  <%= @page_title || t('hotel') %>
-
-</div>
-
-<div id="columns">
-  <div id="side">
-
+       <%= javascript_tag "$('locale input').hide()" %></span>
+        <% end %>
     <!--authorized user section-->
     <% if user_signed_in? %>
         <h3 style="color: white"> <strong><%= current_user.email %></strong></h3><br/>

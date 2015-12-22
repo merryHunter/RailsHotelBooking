@@ -26,7 +26,7 @@
     <td><%= link_to t('show'), booking %></td>
     <% if current_user.admin? %>
     <td><%= link_to t('edit'), edit_booking_path(booking) %></td>
-    <td><%= link_to t('destroy'), booking, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to t('destroy'), booking, confirm: t('confirm'), method: :delete %></td>
         <% end %>
   </tr>
 <% end %>

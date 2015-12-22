@@ -11,21 +11,22 @@
  *= require_self
  *= require_tree .
 */
+.locale{
+  float: right;
+  margin: -0.25em 0.1em;
+}
 #banner {
-  background: #9c9;
+  background: #ccff33;
   padding: 10px;
-  border-bottom: 2px solid;
-  font: small-caps 40px/40px "Times New Roman", serif;
-  color: #282;
+  border-bottom: 10px solid;
+  font: small-caps 40px/40px "Lato", serif;
+  color: #666666;
   text-align: center;
 
-  img {
-    float: left;
-  }
 }
 
 #notice {
-  color: #000 !important;
+  color: #cc0000;
   border: 2px solid red;
   padding: 1em;
   margin-bottom: 2em;
@@ -34,20 +35,20 @@
 }
 
 #columns {
-  background: #141;
 
   #main {
-    margin-left: 17em;
+    margin-left: 35em;
     padding: 1em;
     background: white;
   }
 
   #side {
     float: left;
+    position: static;
     padding: 1em 2em;
     width: 13em;
-    background: #141;
-
+    background: #7777dd;
+    font: small-caps 15px/15px "Lato", serif;
     ul {
       padding: 0;
       li {

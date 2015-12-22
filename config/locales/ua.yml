@@ -24,6 +24,11 @@ ua:
   greeting_guest:  "Привіт, відвідувач!"
   submit:         "Вперед!"
   admin:      "Адміністратор"
+  devise:
+    sessions:
+          user:
+            signed_in: "Ввійдено в систему"
+            signed_out: "Ви залишили систему"
   application:
       my_bookings:  "Мої бронювання"
       book:         "Забронуювати кімнату"

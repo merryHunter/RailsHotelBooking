@@ -13,7 +13,7 @@
     <td><%= apartment_type.title %></td>
     <td><%= link_to t('show'), apartment_type %></td>
     <td><%= link_to t('edit'), edit_apartment_type_path(apartment_type) %></td>
-    <td><%= link_to t('destroy'), apartment_type, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to t('destroy'), apartment_type, confirm: t('confirm'), method: :delete %></td>
   </tr>
 <% end %>
 </table>
